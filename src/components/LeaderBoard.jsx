@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useCallback } from 'react';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import logo from '../assets/LOGOHOR.png'
 
 
 const LeaderBoard = () => {
@@ -81,6 +82,7 @@ const LeaderBoard = () => {
 
   return (
     <div className='absolute flex flex-col w-full font-play justify-start items-center h-screen z-30 overflow-auto'>
+      <img src={logo} alt=""  className='absolute w-60 left-0 ml-5'/>
       <div className='text-7xl font-bold  text-white my-7 '>
         FLAG FURY
       </div>
@@ -108,12 +110,12 @@ const LeaderBoard = () => {
         </div>
 
       </div>
-      <div className='text-4xl font-bold text-orange mb-4 '> Leaderboard</div>
+      <div className='text-4xl font-bold text-orange mb-4 '> LEADERBOARD </div>
       {leaderboard.map((team, index) => (
         <div key={index} className='flex w-[80%] justify-start items-center' >
           <div style={{ width: `${68 / 16 * (team.levelReached) + 12}%`, background: `linear-gradient(to right, #2a2a2a, #d35029)` }} className='bg-grey rounded-sm text-3xl text-bluish my-1 py-1 pl-2 rounded-l-lg'>
             {team.TeamName[0]}{team.TeamName[1]}{team.TeamName[2]}{team.TeamName[3]} {team.TeamName[4]}{team.TeamName[5]}</div>
-          <div className='pl-2 text-bluish text-2xl'> level {team.levelReached + 1}</div>
+          <div className='pl-2 text-bluish text-2xl'> Level {team.levelReached + 1}</div>
         </div>
       ))}</div>) }
      

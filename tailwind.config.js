@@ -12,7 +12,7 @@ export default {
         bluish:"#00afb0"
       },
       fontFamily: {
-        'play': ['Play', 'sans-serif'],
+        'play': ['VT323', 'sans-serif'],
       },
     },
   },

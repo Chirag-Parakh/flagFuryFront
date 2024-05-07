@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { isLoggedInAtom } from '../store/atom.js'
 import Swal from 'sweetalert2'
 import levelsPasswords from '../config.js';
+import logo from '../assets/logo.png'
 
 const Dashboard = () => {
   const [password, setPassword] = useState('');
@@ -93,8 +94,9 @@ const Dashboard = () => {
 
   return (
     <div className='h-screen font-play flex flex-col justify-start items-center '>
-        <button className=' absolute right-0 m-10 text-white bg-orange px-2 rounded' onClick={Logout}>Log out</button>
-        {currentLevel === 17 ?(<div className='text-4xl mt-80 text-white'>CONGRATULATIONS ! YOU HAVE CLEARED ALL THE LEVELS</div>) : (<><h2 className='text-4xl text-white mt-48 my-5'>Level Verification</h2>
+      <div><img src={logo} alt=""  className=' w-48 '/></div>
+        <button className=' absolute right-0 m-10 text-white bg-orange px-2 rounded text-2xl' onClick={Logout}>Log out</button>
+        {currentLevel === 17 ?(<div className='text-4xl mt-52 text-white'>CONGRATULATIONS ! YOU HAVE CLEARED ALL THE LEVELS</div>) : (<><h2 className='text-4xl text-white mt-20 my-5'>Level Verification</h2>
       <label className='text-6xl text-orange'>Enter Password for Level <span className='text-bluish text-7xl'>{currentLevel}</span></label>
       <input
       required="true"
