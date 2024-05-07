@@ -22,7 +22,7 @@ function Home() {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post('http://localhost:3000/login', {
+            const { data } = await axios.post('https://flagfuryback.onrender.com/login', {
                 username: username,
                 password: password
             })

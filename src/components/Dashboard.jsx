@@ -6,19 +6,20 @@ import { currentLevelAtom } from '../store/atom.js'
 import { useNavigate } from 'react-router-dom';
 import { isLoggedInAtom } from '../store/atom.js'
 import Swal from 'sweetalert2'
+import levelsPasswords from '../config.js';
 
 const Dashboard = () => {
   const [password, setPassword] = useState('');
   const [currentLevel , setcurrentLevel] = useRecoilState(currentLevelAtom)
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom)
   const navigate = useNavigate();
-  const levelsPasswords = [ 'owaspctf', 'heroEIN', 'XYqwert12', 'FXgfF2tQ', 'TideBreaker','rs7P0nyL', 'MOchX934CsD' , 'Fny4#HKh' , 'hundred' , 'GhPank34#lnPr' , 'MuPKinawnzz' , 'ARaR56Go' , 'vEzx89lop456qwu' , 'R3JheXNjYWxlIHdpdGggQWxwaGEK' , 'LndfeOfElsadfria' , 'MRRWM6LBOR3QU==='];
+
   const handleVerifyLevel = async () => {
     if (levelsPasswords[currentLevel - 1] === password) {
       try {
         const token = localStorage.getItem('token');
         console.log(token);
-        const response = await axios.post('http://localhost:3000/test', { level: currentLevel }, {
+        const response = await axios.post('https://flagfuryback.onrender.com/test', { level: currentLevel }, {
           headers: {
             'Authorization': `${token}`
           }
@@ -68,7 +69,7 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:3000/current-level', {
+        const response = await axios.get('https://flagfuryback.onrender.com/current-level', {
           headers: {
             'Authorization': `${token}`
           }
@@ -93,7 +94,7 @@ const Dashboard = () => {
   return (
     <div className='h-screen font-play flex flex-col justify-start items-center '>
         <button className=' absolute right-0 m-10 text-white bg-orange px-2 rounded' onClick={Logout}>Log out</button>
-        {currentLevel !== 17 ?(<div className='text-4xl mt-80 text-white'>CONGRATULATIONS ! YOU HAVE CLEARED ALL THE LEVELS</div>) : (<><h2 className='text-4xl text-white mt-48 my-5'>Level Verification</h2>
+        {currentLevel === 17 ?(<div className='text-4xl mt-80 text-white'>CONGRATULATIONS ! YOU HAVE CLEARED ALL THE LEVELS</div>) : (<><h2 className='text-4xl text-white mt-48 my-5'>Level Verification</h2>
       <label className='text-6xl text-orange'>Enter Password for Level <span className='text-bluish text-7xl'>{currentLevel}</span></label>
       <input
       required="true"

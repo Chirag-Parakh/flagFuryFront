@@ -5,7 +5,7 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 
 const LeaderBoard = () => {
-  const targetDate = new Date("2024-05-07T23:26:00");
+  const targetDate = new Date("2024-05-08T13:15:00");
   const [showleader , setshowleader] = useState(true)
   const calculateTimeRemaining = useCallback(() => {
     const now = new Date();
@@ -57,7 +57,7 @@ const LeaderBoard = () => {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/leaderboard');
+        const response = await axios.get('https://flagfuryback.onrender.com/leaderboard');
         setLeaderboard(response.data);
       } catch (error) {
         console.error('Error fetching leaderboard:', error);
@@ -68,7 +68,7 @@ const LeaderBoard = () => {
     setInterval(() => {
       const fetchLeaderboard = async () => {
         try {
-          const response = await axios.get('http://localhost:3000/leaderboard');
+          const response = await axios.get('https://flagfuryback.onrender.com//leaderboard');
           setLeaderboard(response.data);
         } catch (error) {
           console.error('Error fetching leaderboard:', error);
