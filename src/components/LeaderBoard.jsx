@@ -68,7 +68,7 @@ const LeaderBoard = () => {
     setInterval(() => {
       const fetchLeaderboard = async () => {
         try {
-          const response = await axios.get('https://flagfuryback.onrender.com//leaderboard');
+          const response = await axios.get('https://flagfuryback.onrender.com/leaderboard');
           setLeaderboard(response.data);
         } catch (error) {
           console.error('Error fetching leaderboard:', error);
