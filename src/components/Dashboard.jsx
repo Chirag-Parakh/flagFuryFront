@@ -8,14 +8,17 @@ import { isLoggedInAtom } from '../store/atom.js'
 import Swal from 'sweetalert2'
 import levelsPasswords from '../config.js';
 import logo from '../assets/logo.png'
+import { Audio } from 'react-loader-spinner';
 
 const Dashboard = () => {
   const [password, setPassword] = useState('');
   const [currentLevel , setcurrentLevel] = useRecoilState(currentLevelAtom)
+  const [loader , setloader ] = useState(false)
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom)
   const navigate = useNavigate();
 
   const handleVerifyLevel = async () => {
+    setloader(true);
     if (levelsPasswords[currentLevel - 1] === password) {
       try {
         const token = localStorage.getItem('token');
@@ -25,6 +28,7 @@ const Dashboard = () => {
             'Authorization': `${token}`
           }
         });
+        setloader(false);
         Swal.fire({
           position: "top",
           width:'600px',
@@ -39,6 +43,7 @@ const Dashboard = () => {
         setPassword('')
         setcurrentLevel(currentLevel + 1);
       } catch (error) {
+        setloader(false);
         alert('Error updating level');
         Swal.fire({
           position: "top",
@@ -94,6 +99,17 @@ const Dashboard = () => {
 
   return (
     <div className='h-screen font-play flex flex-col justify-start items-center '>
+       {loader ? (<div className='absolute bg-[#00000099] h-screen w-screen flex justify-center items-center'>
+                <Audio
+                height='160'
+                width='160'
+                radius='8'
+                color='#00afb0'
+                ariaLabel='loading'
+                wrapperStyle
+                wrapperClass
+                />
+            </div>) : (<></>)}
       <div><img src={logo} alt=""  className=' w-48 '/></div>
         <button className=' absolute right-0 m-10 text-white bg-orange px-2 rounded text-2xl' onClick={Logout}>Log out</button>
         {currentLevel === 17 ?(<div className='text-4xl mt-52 text-white'>CONGRATULATIONS ! YOU HAVE CLEARED ALL THE LEVELS</div>) : (<><h2 className='text-4xl text-white mt-20 my-5'>Level Verification</h2>
@@ -106,7 +122,7 @@ const Dashboard = () => {
         placeholder='Enter Password'
         className='border-b-2 border-orange hover:scale-105 bg-grey mt-10 text-2xl focus:outline-none text-bluish p-2 ' 
       />
-      <button onClick={handleVerifyLevel} className='my-5 bg-orange text-white px-4 py-1 rounded-lg hover:scale-95'>Verify</button></>) }
+      <button onClick={handleVerifyLevel} className='my-5 bg-orange text-white px-4 py-1 rounded-lg hover:scale-95' >Verify</button></>) }
       
     </div>
   );
