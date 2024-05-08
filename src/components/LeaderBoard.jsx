@@ -93,16 +93,16 @@ const LeaderBoard = () => {
             <div className='m-4'>
               <Countdown
                 duration={90 * 60}
-                initialRemainingTime={timeRemaining.minutes * 60 + timeRemaining.hours * 60 * 60}
-                remainingTime={timeRemaining.minutes + timeRemaining.hours * 60}
+                initialRemainingTime={ timeRemaining.minutes * 60 + timeRemaining.hours * 60 * 60 >0 ? (timeRemaining.minutes * 60 + timeRemaining.hours * 60 * 60):(0)}
+                remainingTime={timeRemaining.minutes + timeRemaining.hours * 60 >0 ? (timeRemaining.minutes + timeRemaining.hours * 60) : (0)}
                 name="Minutes"
               />
             </div>
             <div className='m-4'>
               <Countdown
                 duration={60}
-                initialRemainingTime={timeRemaining.seconds}
-                remainingTime={timeRemaining.seconds}
+                initialRemainingTime={timeRemaining.seconds >0 ? (timeRemaining.seconds):(0)}
+                remainingTime={timeRemaining.seconds>0 ? (timeRemaining.seconds):(0)}
                 name="Seconds"
               />
             </div>
