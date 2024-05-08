@@ -115,7 +115,7 @@ const LeaderBoard = () => {
           <div key={index} className='flex w-[80%] justify-start items-center' >
             <div style={{ width: `${65 / 16 * (team.levelReached) + 15}%`, background: `linear-gradient(to right, #2a2a2a, #d35029)` }} className='bg-grey rounded-sm text-5xl text-bluish my-1 py-1 pl-2 rounded-l-lg'>
               {team.TeamName[0]}{team.TeamName[1]}{team.TeamName[2]}{team.TeamName[3]} {team.TeamName[4]}{team.TeamName[5]}</div>
-            {team.levelReached + 1 < 16 ? (<div className='pl-4 text-bluish text-4xl'> Level {team.levelReached + 1}</div>) : (<div className='pl-2 text-bluish text-4xl'> Level {team.levelReached}</div>)}
+            {team.levelReached + 1 < 16 ? (<div className='pl-4 text-bluish text-4xl'> Level {team.levelReached + 1}</div>) : (<div className='pl-2 text-bluish text-4xl'>All Level Completed</div>)}
 
           </div>
         ))}</div>)}
