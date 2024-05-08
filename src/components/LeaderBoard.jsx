@@ -45,8 +45,8 @@ const LeaderBoard = () => {
       >
         {({ remainingTime }) => (
           <div className="flex flex-col items-center justify-center  w-10">
-            <span className="text-4xl">{props.remainingTime}</span>
-            <span className="countdownName">{props.name}</span>
+            <span className="text-5xl">{props.remainingTime}</span>
+            <span className="countdownName text-3xl">{props.name}</span>
           </div>
         )}
       </CountdownCircleTimer>
