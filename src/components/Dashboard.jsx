@@ -1,5 +1,5 @@
 
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { currentLevelAtom } from '../store/atom.js'
@@ -12,8 +12,8 @@ import { Audio } from 'react-loader-spinner';
 
 const Dashboard = () => {
   const [password, setPassword] = useState('');
-  const [currentLevel , setcurrentLevel] = useRecoilState(currentLevelAtom)
-  const [loader , setloader ] = useState(false)
+  const [currentLevel, setcurrentLevel] = useRecoilState(currentLevelAtom)
+  const [loader, setloader] = useState(false)
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom)
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ const Dashboard = () => {
         setloader(false);
         Swal.fire({
           position: "top",
-          width:'600px',
+          width: '600px',
           icon: "success",
           title: `${response.data.message}`,
           showConfirmButton: false,
@@ -47,7 +47,7 @@ const Dashboard = () => {
         alert('Error updating level');
         Swal.fire({
           position: "top",
-          width:'600px',
+          width: '600px',
           icon: "error",
           title: `Error updating level`,
           showConfirmButton: false,
@@ -60,7 +60,7 @@ const Dashboard = () => {
     } else {
       Swal.fire({
         position: "top",
-        width:'300px',
+        width: '300px',
         icon: "error",
         title: `wrong password`,
         showConfirmButton: false,
@@ -81,7 +81,7 @@ const Dashboard = () => {
           }
         });
         const { level } = response.data;
-        setcurrentLevel(level+1);
+        setcurrentLevel(level + 1);
       } catch (error) {
         console.error('Error fetching current level:', error);
       }
@@ -90,40 +90,40 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  const Logout =  () =>  {
+  const Logout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false)
-     navigate("/");
+    navigate("/");
     console.log("hello")
   }
 
   return (
     <div className='h-screen font-play flex flex-col justify-start items-center '>
-       {loader ? (<div className='absolute bg-[#00000099] h-screen w-screen flex justify-center items-center'>
-                <Audio
-                height='160'
-                width='160'
-                radius='8'
-                color='#00afb0'
-                ariaLabel='loading'
-                wrapperStyle
-                wrapperClass
-                />
-            </div>) : (<></>)}
-      <div><img src={logo} alt=""  className=' w-48 '/></div>
-        <button className=' absolute right-0 m-10 text-white bg-orange px-2 rounded text-2xl' onClick={Logout}>Log out</button>
-        {currentLevel === 17 ?(<div className='text-4xl mt-52 text-white'>CONGRATULATIONS ! YOU HAVE CLEARED ALL THE LEVELS</div>) : (<><h2 className='text-4xl text-white mt-20 my-5'>Level Verification</h2>
-      <label className='text-6xl text-orange'>Enter Password for Level <span className='text-bluish text-7xl'>{currentLevel}</span></label>
-      <input
-      required="true"
-        type="text"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder='Enter Password'
-        className='border-b-2 border-orange hover:scale-105 bg-grey mt-10 text-2xl focus:outline-none text-bluish p-2 ' 
-      />
-      <button onClick={handleVerifyLevel} className='my-5 bg-orange text-white px-4 py-1 rounded-lg hover:scale-95' >Verify</button></>) }
-      
+      {loader ? (<div className='absolute bg-[#00000099] h-screen w-screen flex justify-center items-center'>
+        <Audio
+          height='160'
+          width='160'
+          radius='8'
+          color='#00afb0'
+          ariaLabel='loading'
+          wrapperStyle
+          wrapperClass
+        />
+      </div>) : (<></>)}
+      <div><img src={logo} alt="" className=' w-48 ' /></div>
+      <button className=' absolute right-0 m-10 text-white bg-orange px-2 rounded text-2xl' onClick={Logout}>Log out</button>
+      {currentLevel === 17 ? (<div className='text-4xl mt-52 text-white'>CONGRATULATIONS ! YOU HAVE CLEARED ALL THE LEVELS</div>) : (<><h2 className='text-4xl text-white mt-20 my-5'>Level Verification</h2>
+        <label className='text-6xl text-orange'>Enter Password for Level <span className='text-bluish text-7xl'>{currentLevel}</span></label>
+        <input
+          required="true"
+          type="text"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder='Enter Password'
+          className='border-b-2 border-orange hover:scale-105 bg-grey mt-10 text-2xl focus:outline-none text-bluish p-2 '
+        />
+        <button onClick={handleVerifyLevel} className='my-5 bg-orange text-white px-4 py-1 rounded-lg hover:scale-95' >Verify</button></>)}
+
     </div>
   );
 };

@@ -8,3 +8,7 @@
 .home{
     background: #252525;
 }
+
+.leaderboard::-webkit-scrollbar{
+display: none;
+}
