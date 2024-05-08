@@ -6,7 +6,7 @@ import logo from '../assets/LOGOHOR.png'
 
 
 const LeaderBoard = () => {
-  const targetDate = new Date("2024-05-08T13:20:00");
+  const targetDate = new Date("2024-05-08T13:25:00");
   const [showleader, setshowleader] = useState(true)
   const calculateTimeRemaining = useCallback(() => {
     const now = new Date();
