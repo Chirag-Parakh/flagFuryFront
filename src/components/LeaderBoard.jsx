@@ -35,7 +35,7 @@ const LeaderBoard = () => {
         isPlaying
         strokeWidth="6"
         duration={props.duration}
-        size="130"
+        size="170"
         initialRemainingTime={props.initialRemainingTime}
         colors="#00afb0"
         trailColor="#1f2937"
@@ -44,8 +44,8 @@ const LeaderBoard = () => {
         }}
       >
         {({ remainingTime }) => (
-          <div className="flex flex-col items-center justify-center ">
-            <span className="text-2xl">{props.remainingTime}</span>
+          <div className="flex flex-col items-center justify-center  w-10">
+            <span className="text-4xl">{props.remainingTime}</span>
             <span className="countdownName">{props.name}</span>
           </div>
         )}
@@ -83,12 +83,12 @@ const LeaderBoard = () => {
   return (
     <div className='absolute flex flex-col w-full font-play justify-start items-center h-screen z-30 overflow-auto leaderboard'>
       <img src={logo} alt="" className='absolute w-60 left-0 ml-5' />
-      <div className='text-7xl font-bold  text-white my-7 '>
+      <div className='text-9xl font-bold  text-white my-5 '>
         FLAG FURY
       </div>
       {showleader ? (<button className='text-white bg-orange text-4xl p-2 mt-52 rounded-xl' onClick={() => { setshowleader(false) }}>START CAPTURING THE FLAG</button>) : (<div className='w-screen flex flex-col justify-center items-center'><div className=' w-[32rem] block'>
         <div className="flex text-white items-center flex-col">
-          <div className='text-4xl font-bold text-bluish'>TIME REMAINING</div>
+          <div className='text-5xl font-bold text-bluish'>TIME REMAINING</div>
           <div className='flex'>
             <div className='m-4'>
               <Countdown
@@ -110,7 +110,7 @@ const LeaderBoard = () => {
         </div>
 
       </div>
-        <div className='text-4xl font-bold text-orange mb-4 leaderboard'> LEADERBOARD </div>
+        <div className='text-5xl font-bold text-orange mb-4 leaderboard'> LEADERBOARD </div>
         {leaderboard.map((team, index) => (
           <div key={index} className='flex w-[80%] justify-start items-center' >
             <div style={{ width: `${68 / 16 * (team.levelReached) + 12}%`, background: `linear-gradient(to right, #2a2a2a, #d35029)` }} className='bg-grey rounded-sm text-3xl text-bluish my-1 py-1 pl-2 rounded-l-lg'>
